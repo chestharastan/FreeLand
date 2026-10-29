@@ -1,0 +1,226 @@
+{
+  "basePath": "/images/cafe/",
+  "format": "webp",
+  "slots": [
+    {
+      "slot": "home-hero",
+      "file": "home-hero.webp",
+      "ratio": "4:5",
+      "alt": "Barista finishing an iced coffee in a warm café"
+    },
+    {
+      "slot": "signature-lineup",
+      "file": "signature-lineup.webp",
+      "ratio": "16:9",
+      "alt": "Selection of four iced signature café drinks"
+    },
+    {
+      "slot": "iced-latte",
+      "file": "iced-latte.webp",
+      "ratio": "1:1",
+      "alt": "Tonlé Iced Latte iced coffee"
+    },
+    {
+      "slot": "iced-latte-cutout",
+      "file": "iced-latte-cutout.webp",
+      "ratio": "907:1200",
+      "transparent": true,
+      "alt": "Tonlé Iced Latte iced coffee"
+    },
+    {
+      "slot": "mekong-caramel",
+      "file": "mekong-caramel.webp",
+      "ratio": "1:1",
+      "alt": "Mekong Caramel iced coffee"
+    },
+    {
+      "slot": "mekong-caramel-cutout",
+      "file": "mekong-caramel-cutout.webp",
+      "ratio": "575:1200",
+      "transparent": true,
+      "alt": "Mekong Caramel iced coffee"
+    },
+    {
+      "slot": "coconut-cloud",
+      "file": "coconut-cloud.webp",
+      "ratio": "1:1",
+      "alt": "Coconut Cloud iced coffee"
+    },
+    {
+      "slot": "coconut-cloud-cutout",
+      "file": "coconut-cloud-cutout.webp",
+      "ratio": "744:1200",
+      "transparent": true,
+      "alt": "Coconut Cloud iced coffee"
+    },
+    {
+      "slot": "citrus-cold-brew",
+      "file": "citrus-cold-brew.webp",
+      "ratio": "1:1",
+      "alt": "Citrus Cold Brew iced coffee"
+    },
+    {
+      "slot": "citrus-cold-brew-cutout",
+      "file": "citrus-cold-brew-cutout.webp",
+      "ratio": "586:1200",
+      "transparent": true,
+      "alt": "Citrus Cold Brew iced coffee"
+    },
+    {
+      "slot": "qr-order-demo",
+      "file": "qr-order-demo.webp",
+      "ratio": "4:3",
+      "alt": "Customer scanning a demo table ordering QR code"
+    },
+    {
+      "slot": "interior-story",
+      "file": "interior-story.webp",
+      "ratio": "3:2",
+      "alt": "Welcoming café interior with daylight and comfortable seats"
+    },
+    {
+      "slot": "reward-card",
+      "file": "reward-card.webp",
+      "ratio": "3:2",
+      "alt": "Illustrated progress toward a free tenth drink"
+    },
+    {
+      "slot": "branch-riverside",
+      "file": "branch-riverside.webp",
+      "ratio": "3:2",
+      "alt": "Kafé Tonlé Riverside interior"
+    },
+    {
+      "slot": "branch-toulkork",
+      "file": "branch-toulkork.webp",
+      "ratio": "3:2",
+      "alt": "Kafé Tonlé Toul Kork interior"
+    },
+    {
+      "slot": "branch-bkk1",
+      "file": "branch-bkk1.webp",
+      "ratio": "3:2",
+      "alt": "Kafé Tonlé BKK1 interior"
+    },
+    {
+      "slot": "espresso",
+      "file": "espresso.webp",
+      "ratio": "1:1",
+      "alt": "Espresso Shot coffee"
+    },
+    {
+      "slot": "americano",
+      "file": "americano.webp",
+      "ratio": "1:1",
+      "alt": "Americano black coffee"
+    },
+    {
+      "slot": "flat-white",
+      "file": "flat-white.webp",
+      "ratio": "1:1",
+      "alt": "Flat White coffee"
+    },
+    {
+      "slot": "cappuccino",
+      "file": "cappuccino.webp",
+      "ratio": "1:1",
+      "alt": "Cappuccino coffee"
+    },
+    {
+      "slot": "mocha",
+      "file": "mocha.webp",
+      "ratio": "1:1",
+      "alt": "Mocha coffee"
+    },
+    {
+      "slot": "brown-sugar",
+      "file": "brown-sugar.webp",
+      "ratio": "1:1",
+      "alt": "Brown Sugar Latte iced coffee"
+    },
+    {
+      "slot": "iced-americano",
+      "file": "iced-americano.webp",
+      "ratio": "1:1",
+      "alt": "Iced Americano coffee"
+    },
+    {
+      "slot": "palm-sugar-latte",
+      "file": "palm-sugar-latte.webp",
+      "ratio": "1:1",
+      "alt": "Palm Sugar Latte iced coffee"
+    },
+    {
+      "slot": "matcha",
+      "file": "matcha.webp",
+      "ratio": "1:1",
+      "alt": "Matcha Cream drink"
+    },
+    {
+      "slot": "iced-chocolate",
+      "file": "iced-chocolate.webp",
+      "ratio": "1:1",
+      "alt": "Iced Chocolate drink"
+    },
+    {
+      "slot": "strawberry-milk",
+      "file": "strawberry-milk.webp",
+      "ratio": "1:1",
+      "alt": "Strawberry Milk drink"
+    },
+    {
+      "slot": "mango-smoothie",
+      "file": "mango-smoothie.webp",
+      "ratio": "1:1",
+      "alt": "Mango Smoothie drink"
+    },
+    {
+      "slot": "lemongrass-tea",
+      "file": "lemongrass-tea.webp",
+      "ratio": "1:1",
+      "alt": "Lemongrass Tea"
+    },
+    {
+      "slot": "jasmine-green-tea",
+      "file": "jasmine-green-tea.webp",
+      "ratio": "1:1",
+      "alt": "Jasmine Green Tea"
+    },
+    {
+      "slot": "passion-fruit-tea",
+      "file": "passion-fruit-tea.webp",
+      "ratio": "1:1",
+      "alt": "Passion Fruit Iced Tea"
+    },
+    {
+      "slot": "croissant",
+      "file": "croissant.webp",
+      "ratio": "1:1",
+      "alt": "Butter Croissant pastry"
+    },
+    {
+      "slot": "banana-bread",
+      "file": "banana-bread.webp",
+      "ratio": "1:1",
+      "alt": "Banana Bread pastry"
+    },
+    {
+      "slot": "cinnamon-roll",
+      "file": "cinnamon-roll.webp",
+      "ratio": "1:1",
+      "alt": "Cinnamon Roll pastry"
+    },
+    {
+      "slot": "choc-chip-cookie",
+      "file": "choc-chip-cookie.webp",
+      "ratio": "1:1",
+      "alt": "Chocolate Chip Cookie"
+    },
+    {
+      "slot": "pandan-cake",
+      "file": "pandan-cake.webp",
+      "ratio": "1:1",
+      "alt": "Pandan Coconut Cake slice"
+    }
+  ]
+}

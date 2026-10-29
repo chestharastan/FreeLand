@@ -1,0 +1,19 @@
+# dependencies and build output
+node_modules/
+dist/
+.vite/
+# local env and logs
+.env
+.env.local
+.env.*.local
+*.log
+# python (future API work)
+.venv/
+__pycache__/
+.pgdata/
+# os / editor
+.DS_Store
+.idea/
+.vscode/
+# local backups
+*-backup-*/

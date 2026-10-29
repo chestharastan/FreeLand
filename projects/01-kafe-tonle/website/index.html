@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en" data-app="booting">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Kafé Tonlé — Coffee by the Mekong · Concept café website</title>
+  <meta name="description" content="Kafé Tonlé is a fictional three-branch café concept: signature iced coffees, QR table ordering and a nine-stamp rewards card. Interactive portfolio demo by Thareah — no real business, bookings or payments." />
+  <meta name="theme-color" content="#F8F3E8" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%230D514F'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23F8F3E8' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E" />
+  <!-- Fonts: editorial serif (Fraunces) for display, clean sans (Manrope) for body, Khmer-compatible fallback. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@400..800&family=Noto+Sans+Khmer:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/styles/main.css" />
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+  <!-- Preloader: fades out once fonts and scroll effects are ready (or after a safety timeout). -->
+  <div class="loader" id="loader" aria-live="polite">
+    <div class="loader__mark">
+      <span class="loader__word">KAFÉ TONLÉ</span>
+      <span class="loader__sub">Coffee by the Mekong</span>
+      <span class="loader__bar"><i></i></span>
+    </div>
+  </div>
+
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <!-- Mandatory site-wide demo ribbon (00-SHARED-FOUNDATION.md §6) -->
+  <div class="ribbon" role="note">
+    <span>Interactive portfolio demo · Fictional business · No real bookings or payments</span>
+    <span class="ribbon__sep" aria-hidden="true">·</span>
+    <span class="ribbon__announce">Good coffee, good company. Explore our café concept.</span>
+  </div>
+
+  <header class="header" id="header">
+    <div class="container header__row">
+      <a class="wordmark" href="#home" aria-label="Kafé Tonlé home">KAFÉ <em>TONLÉ</em></a>
+      <nav class="nav" id="nav" aria-label="Primary">
+        <a href="#home" data-nav="home">Home</a>
+        <a href="#menu" data-nav="menu">Menu</a>
+        <a href="#locations" data-nav="locations">Locations</a>
+        <a href="#our-story" data-nav="our-story">Our Story</a>
+        <a href="#rewards" data-nav="rewards">Rewards</a>
+        <a href="#contact" data-nav="contact">Contact</a>
+      </nav>
+      <div class="header__tools">
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" class="lang__btn is-active" data-lang="en" aria-pressed="true">EN</button>
+          <span aria-hidden="true">|</span>
+          <button type="button" class="lang__btn lang__btn--km" data-lang="km" aria-pressed="false" lang="km">ខ្មែរ</button>
+        </div>
+        <a class="btn btn--solid btn--sm" href="#menu">View Menu</a>
+        <button type="button" class="burger" id="burger" aria-controls="nav" aria-expanded="false" aria-label="Open menu"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============================ HERO ============================ -->
+    <section class="hero section" id="home" data-theme="cream">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow" data-reveal>Your daily ritual, reimagined</p>
+          <h1 class="display display--xl" data-reveal data-split>A good day begins with a better cup.</h1>
+          <p class="lead" data-reveal>From the first rich espresso to the last sip of a bright iced latte, Kafé Tonlé makes space for the moments in between.</p>
+          <div class="actions" data-reveal>
+            <a class="btn btn--solid" href="#menu">Explore our menu</a>
+            <a class="btn btn--ghost" href="#locations">Find your café</a>
+          </div>
+          <p class="caption hero__caption" data-reveal>Freshly brewed. Thoughtfully served.</p>
+        </div>
+
+        <div class="hero__visual">
+          <figure class="ph ph--card hero__photo" data-depth="0.35" data-slot="home-hero" data-src="/images/cafe/home-hero.webp" data-alt="Barista finishing an iced coffee in a warm café" style="--ratio: 4 / 5">
+            <figcaption class="ph__label"><span class="ph__slot">home-hero.webp</span><span class="ph__meta">4:5 · drop into /images/cafe/</span></figcaption>
+          </figure>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#menu" aria-label="Scroll to the menu"><span>Scroll</span><i></i></a>
+    </section>
+
+    <!-- ============================ TRUST STRIP ============================ -->
+    <section class="strip" data-theme="cream" aria-label="Why Kafé Tonlé">
+      <ul class="strip__list container">
+        <li data-reveal><i class="dot"></i>Made when you order</li>
+        <li data-reveal><i class="dot"></i>Your way: ice, sugar and size</li>
+        <li data-reveal><i class="dot"></i>Three demo locations across Phnom Penh</li>
+      </ul>
+    </section>
+
+    <!-- ============================ SIGNATURE DRINKS — pinned colour-block slides ============================
+         Simply-Chocolate pattern: one solid colour per product, the product photo centre-stage over the giant
+         name, one product per viewport, dot nav. -->
+    <section class="drinks section" id="menu" data-theme="latte">
+      <div class="drinks__pin">
+        <header class="drinks__intro container">
+          <p class="eyebrow">Signature drinks</p>
+          <h2 class="display display--m">Meet your next favorite.</h2>
+          <p class="lead muted">Familiar classics and playful Tonlé signatures, each ready to make your own.</p>
+        </header>
+
+        <div class="drinks__stage container">
+          <div class="drinks__slides">
+
+            <article class="slide is-active" data-slide="0" data-theme="latte" aria-roledescription="slide" aria-label="1 of 4">
+              <h3 class="slide__name display">Tonlé <em>Iced</em> Latte</h3>
+              <div class="slide__copy">
+                <span class="slide__index">01 / 04 · Iced Favorites</span>
+                <p class="slide__desc">Silky espresso, chilled milk and a smooth finish.</p>
+                <div class="slide__meta"><span class="price">$3.25</span><span class="caption">demo base price</span></div>
+                <a class="btn btn--solid" href="/menu/tonle-iced-latte" data-route="Tonlé Iced Latte — detail page" data-route-note="Size, sweetness, ice, milk and extra-shot options are customised here and added to a demo order.">See details</a>
+              </div>
+              <div class="slide__photo" data-depth="0.25">
+                <figure class="ph ph--cutout" data-slot="iced-latte-cutout" data-src="/images/cafe/iced-latte-cutout.webp" data-alt="Tonlé Iced Latte iced coffee" style="--ratio: 907 / 1200">
+                  <figcaption class="ph__label"><span class="ph__slot">iced-latte-cutout.webp</span><span class="ph__meta">transparent</span></figcaption>
+                </figure>
+              </div>
+            </article>
+
+            <article class="slide" data-slide="1" data-theme="caramel" aria-roledescription="slide" aria-label="2 of 4">
+              <h3 class="slide__name display">Mekong <em>Caramel</em></h3>
+              <div class="slide__copy">
+                <span class="slide__index">02 / 04 · Iced Favorites</span>
+                <p class="slide__desc">A bold espresso swirl with buttery caramel notes.</p>
+                <div class="slide__meta"><span class="price">$3.75</span><span class="caption">demo base price</span></div>
+                <a class="btn btn--solid" href="/menu/mekong-caramel" data-route="Mekong Caramel — detail page" data-route-note="Size, sweetness, ice, milk and extra-shot options are customised here and added to a demo order.">See details</a>
+              </div>
+              <div class="slide__photo" data-depth="0.25">
+                <figure class="ph ph--cutout" data-slot="mekong-caramel-cutout" data-src="/images/cafe/mekong-caramel-cutout.webp" data-alt="Mekong Caramel iced coffee" style="--ratio: 575 / 1200">
+                  <figcaption class="ph__label"><span class="ph__slot">mekong-caramel-cutout.webp</span><span class="ph__meta">transparent</span></figcaption>
+                </figure>
+              </div>
+            </article>
+
+            <article class="slide" data-slide="2" data-theme="coconut" aria-roledescription="slide" aria-label="3 of 4">
+              <h3 class="slide__name display">Coconut <em>Cloud</em></h3>
+              <div class="slide__copy">
+                <span class="slide__index">03 / 04 · Iced Favorites</span>
+                <p class="slide__desc">Creamy coconut and coffee, refreshingly light.</p>
+                <div class="slide__meta"><span class="price">$3.95</span><span class="caption">demo base price</span></div>
+                <a class="btn btn--solid" href="/menu/coconut-cloud" data-route="Coconut Cloud — detail page" data-route-note="Size, sweetness, ice, milk and extra-shot options are customised here and added to a demo order.">See details</a>
+              </div>
+              <div class="slide__photo" data-depth="0.25">
+                <figure class="ph ph--cutout" data-slot="coconut-cloud-cutout" data-src="/images/cafe/coconut-cloud-cutout.webp" data-alt="Coconut Cloud iced coffee" style="--ratio: 744 / 1200">
+                  <figcaption class="ph__label"><span class="ph__slot">coconut-cloud-cutout.webp</span><span class="ph__meta">transparent</span></figcaption>
+                </figure>
+              </div>
+            </article>
+
+            <article class="slide" data-slide="3" data-theme="citrus" aria-roledescription="slide" aria-label="4 of 4">
+              <h3 class="slide__name display">Citrus <em>Cold</em> Brew</h3>
+              <div class="slide__copy">
+                <span class="slide__index">04 / 04 · Iced Favorites</span>
+                <p class="slide__desc">Slow-steeped coffee with a bright citrus lift.</p>
+                <div class="slide__meta"><span class="price">$3.50</span><span class="caption">demo base price</span></div>
+                <a class="btn btn--solid" href="/menu/citrus-cold-brew" data-route="Citrus Cold Brew — detail page" data-route-note="Size, sweetness, ice, milk and extra-shot options are customised here and added to a demo order.">See details</a>
+              </div>
+              <div class="slide__photo" data-depth="0.25">
+                <figure class="ph ph--cutout" data-slot="citrus-cold-brew-cutout" data-src="/images/cafe/citrus-cold-brew-cutout.webp" data-alt="Citrus Cold Brew iced coffee" style="--ratio: 586 / 1200">
+                  <figcaption class="ph__label"><span class="ph__slot">citrus-cold-brew-cutout.webp</span><span class="ph__meta">transparent</span></figcaption>
+                </figure>
+              </div>
+            </article>
+
+          </div>
+
+          <nav class="drinks__dots" aria-label="Signature drinks">
+            <button type="button" class="is-active" data-goto="0" aria-label="Tonlé Iced Latte"></button>
+            <button type="button" data-goto="1" aria-label="Mekong Caramel"></button>
+            <button type="button" data-goto="2" aria-label="Coconut Cloud"></button>
+            <button type="button" data-goto="3" aria-label="Citrus Cold Brew"></button>
+          </nav>
+        </div>
+
+        <footer class="drinks__footer container">
+          <span class="caption">Scroll to pour the next one</span>
+          <a class="btn btn--ghost btn--sm" href="#full-menu">View full menu</a>
+        </footer>
+      </div>
+    </section>
+
+    <!-- ============================ FULL MENU — every product, grouped by category; filters + search (client-side) ============================
+         Generated from the catalogue in tools/build_menu.py (edit the list there and re-run it), or hand-edit: the markup is plain HTML. -->
+    <section class="menugrid section" id="full-menu" data-theme="cream">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow" data-reveal>Full menu</p>
+          <h2 class="display display--l" data-reveal data-split>Something good is brewing.</h2>
+          <p class="lead" data-reveal>Browse our demo menu. All prices and availability are illustrative and may vary by branch.</p>
+          <p class="menu__summary" id="menu-summary" data-reveal>24 items across 5 categories · 13 new this season</p>
+        </header>
+
+        <div class="menugrid__tools" data-reveal>
+          <div class="chips" role="group" aria-label="Categories">
+            <button type="button" class="chip is-active" data-cat="all" aria-pressed="true">All <span class="chip__n">24</span></button>
+            <button type="button" class="chip" data-cat="espresso" aria-pressed="false">Espresso <span class="chip__n">5</span></button>
+            <button type="button" class="chip" data-cat="iced" aria-pressed="false">Iced Favorites <span class="chip__n">7</span></button>
+            <button type="button" class="chip" data-cat="noncoffee" aria-pressed="false">Non-Coffee <span class="chip__n">4</span></button>
+            <button type="button" class="chip" data-cat="tea" aria-pressed="false">Tea <span class="chip__n">3</span></button>
+            <button type="button" class="chip" data-cat="bakery" aria-pressed="false">Bakery <span class="chip__n">5</span></button>
+            <button type="button" class="chip chip--new" data-cat="new" aria-pressed="false">New <span class="chip__n">13</span></button>
+          </div>
+          <label class="field field--search"><span class="sr-only">Search the menu</span><input type="search" id="menu-search" placeholder="Find a drink or pastry..." autocomplete="off" /></label>
+          <label class="field field--select"><span class="field__label">Choose demo branch</span>
+            <select id="menu-branch"><option value="RIV">Riverside</option><option value="TK">Toul Kork</option><option value="BKK">BKK1</option></select>
+          </label>
+        </div>
+
+        <div class="menucats" id="menu-list">
+        <section class="menucat" data-cat="espresso" aria-labelledby="menucat-espresso">
+          <header class="menucat__head">
+            <h3 class="display display--s" id="menucat-espresso">Espresso</h3>
+            <p class="caption">Pulled fresh on the demo bar and served hot.</p>
+            <span class="menucat__count caption">5 items</span>
+          </header>
+          <ul class="menu">
+          <li class="item" data-cat="espresso" data-name="Espresso Shot" data-tags="Hot Double shot option +1 stamp" data-soldout="">
+            <figure class="ph" data-slot="espresso" data-src="/images/cafe/espresso.webp" data-alt="Espresso Shot coffee" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">espresso.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            
+            <div class="item__body"><h3>Espresso Shot</h3><p>Intense and aromatic, served short.</p>
+              <ul class="item__tags" aria-label="Details"><li>Hot</li><li>Double shot option</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="2.00">$2.00</span><span class="khr caption" data-usd="2.00"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/espresso-shot" data-route="Espresso Shot" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="espresso" data-name="Americano" data-tags="Hot Black coffee +1 stamp" data-new="" data-soldout="">
+            <figure class="ph" data-slot="americano" data-src="/images/cafe/americano.webp" data-alt="Americano black coffee" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">americano.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            <span class="badges" aria-label="New"><span class="badge badge--new">New</span></span>
+            <div class="item__body"><h3>Americano</h3><p>Espresso lengthened with hot water, clean and bold.</p>
+              <ul class="item__tags" aria-label="Details"><li>Hot</li><li>Black coffee</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="2.50">$2.50</span><span class="khr caption" data-usd="2.50"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/americano" data-route="Americano" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="espresso" data-name="Flat White" data-tags="Hot Oat milk option +1 stamp" data-soldout="">
+            <figure class="ph" data-slot="flat-white" data-src="/images/cafe/flat-white.webp" data-alt="Flat White coffee" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">flat-white.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            
+            <div class="item__body"><h3>Flat White</h3><p>Velvety microfoam, balanced and bold.</p>
+              <ul class="item__tags" aria-label="Details"><li>Hot</li><li>Oat milk option</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="3.00">$3.00</span><span class="khr caption" data-usd="3.00"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/flat-white" data-route="Flat White" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="espresso" data-name="Cappuccino" data-tags="Hot Cocoa dust +1 stamp" data-new="" data-soldout="">
+            <figure class="ph" data-slot="cappuccino" data-src="/images/cafe/cappuccino.webp" data-alt="Cappuccino coffee" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">cappuccino.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            <span class="badges" aria-label="New"><span class="badge badge--new">New</span></span>
+            <div class="item__body"><h3>Cappuccino</h3><p>Espresso under a thick cap of airy foam.</p>
+              <ul class="item__tags" aria-label="Details"><li>Hot</li><li>Cocoa dust</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="3.00">$3.00</span><span class="khr caption" data-usd="3.00"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/cappuccino" data-route="Cappuccino" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="espresso" data-name="Mocha" data-tags="Hot Whipped top +1 stamp" data-new="" data-soldout="">
+            <figure class="ph" data-slot="mocha" data-src="/images/cafe/mocha.webp" data-alt="Mocha coffee" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">mocha.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            <span class="badges" aria-label="New"><span class="badge badge--new">New</span></span>
+            <div class="item__body"><h3>Mocha</h3><p>Espresso, dark chocolate and steamed milk.</p>
+              <ul class="item__tags" aria-label="Details"><li>Hot</li><li>Whipped top</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="3.50">$3.50</span><span class="khr caption" data-usd="3.50"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/mocha" data-route="Mocha" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          </ul>
+        </section>
+        <section class="menucat" data-cat="iced" aria-labelledby="menucat-iced">
+          <header class="menucat__head">
+            <h3 class="display display--s" id="menucat-iced">Iced Favorites</h3>
+            <p class="caption">Cold, bright and built for a Phnom Penh afternoon.</p>
+            <span class="menucat__count caption">7 items</span>
+          </header>
+          <ul class="menu">
+          <li class="item" data-cat="iced" data-name="Tonlé Iced Latte" data-tags="Iced Oat milk option +1 stamp" data-soldout="">
+            <figure class="ph" data-slot="iced-latte" data-src="/images/cafe/iced-latte.webp" data-alt="Tonlé Iced Latte iced coffee" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">iced-latte.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            <span class="badges" aria-label="Signature"><span class="badge badge--signature">Signature</span></span>
+            <div class="item__body"><h3>Tonlé Iced Latte</h3><p>Silky espresso, chilled milk and a smooth finish.</p>
+              <ul class="item__tags" aria-label="Details"><li>Iced</li><li>Oat milk option</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="3.25">$3.25</span><span class="khr caption" data-usd="3.25"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/tonle-iced-latte" data-route="Tonlé Iced Latte" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="iced" data-name="Mekong Caramel" data-tags="Iced Caramel drizzle +1 stamp" data-soldout="">
+            <figure class="ph" data-slot="mekong-caramel" data-src="/images/cafe/mekong-caramel.webp" data-alt="Mekong Caramel iced coffee" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">mekong-caramel.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            <span class="badges" aria-label="Signature"><span class="badge badge--signature">Signature</span></span>
+            <div class="item__body"><h3>Mekong Caramel</h3><p>A bold espresso swirl with buttery caramel notes.</p>
+              <ul class="item__tags" aria-label="Details"><li>Iced</li><li>Caramel drizzle</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="3.75">$3.75</span><span class="khr caption" data-usd="3.75"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/mekong-caramel" data-route="Mekong Caramel" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="iced" data-name="Coconut Cloud" data-tags="Iced Dairy-free +1 stamp" data-soldout="BKK">
+            <figure class="ph" data-slot="coconut-cloud" data-src="/images/cafe/coconut-cloud.webp" data-alt="Coconut Cloud iced coffee" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">coconut-cloud.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            <span class="badges" aria-label="Signature"><span class="badge badge--signature">Signature</span></span>
+            <div class="item__body"><h3>Coconut Cloud</h3><p>Creamy coconut and coffee, refreshingly light.</p>
+              <ul class="item__tags" aria-label="Details"><li>Iced</li><li>Dairy-free</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="3.95">$3.95</span><span class="khr caption" data-usd="3.95"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/coconut-cloud" data-route="Coconut Cloud" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="iced" data-name="Citrus Cold Brew" data-tags="Iced No milk +1 stamp" data-soldout="">
+            <figure class="ph" data-slot="citrus-cold-brew" data-src="/images/cafe/citrus-cold-brew.webp" data-alt="Citrus Cold Brew iced coffee" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">citrus-cold-brew.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            <span class="badges" aria-label="Signature"><span class="badge badge--signature">Signature</span></span>
+            <div class="item__body"><h3>Citrus Cold Brew</h3><p>Slow-steeped coffee with a bright citrus lift.</p>
+              <ul class="item__tags" aria-label="Details"><li>Iced</li><li>No milk</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="3.50">$3.50</span><span class="khr caption" data-usd="3.50"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/citrus-cold-brew" data-route="Citrus Cold Brew" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="iced" data-name="Brown Sugar Latte" data-tags="Iced Sweet +1 stamp" data-soldout="">
+            <figure class="ph" data-slot="brown-sugar" data-src="/images/cafe/brown-sugar.webp" data-alt="Brown Sugar Latte iced coffee" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">brown-sugar.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            
+            <div class="item__body"><h3>Brown Sugar Latte</h3><p>A mellow latte with a dark sugar finish.</p>
+              <ul class="item__tags" aria-label="Details"><li>Iced</li><li>Sweet</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="3.65">$3.65</span><span class="khr caption" data-usd="3.65"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/brown-sugar-latte" data-route="Brown Sugar Latte" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="iced" data-name="Iced Americano" data-tags="Iced Black coffee +1 stamp" data-new="" data-soldout="">
+            <figure class="ph" data-slot="iced-americano" data-src="/images/cafe/iced-americano.webp" data-alt="Iced Americano coffee" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">iced-americano.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            <span class="badges" aria-label="New"><span class="badge badge--new">New</span></span>
+            <div class="item__body"><h3>Iced Americano</h3><p>Double espresso over ice, bright and refreshing.</p>
+              <ul class="item__tags" aria-label="Details"><li>Iced</li><li>Black coffee</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="2.75">$2.75</span><span class="khr caption" data-usd="2.75"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/iced-americano" data-route="Iced Americano" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="iced" data-name="Palm Sugar Latte" data-tags="Iced Local palm sugar +1 stamp" data-new="" data-soldout="">
+            <figure class="ph" data-slot="palm-sugar-latte" data-src="/images/cafe/palm-sugar-latte.webp" data-alt="Palm Sugar Latte iced coffee" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">palm-sugar-latte.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            <span class="badges" aria-label="New"><span class="badge badge--new">New</span></span>
+            <div class="item__body"><h3>Palm Sugar Latte</h3><p>Espresso and cold milk with a caramelly palm-sugar swirl.</p>
+              <ul class="item__tags" aria-label="Details"><li>Iced</li><li>Local palm sugar</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="3.85">$3.85</span><span class="khr caption" data-usd="3.85"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/palm-sugar-latte" data-route="Palm Sugar Latte" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          </ul>
+        </section>
+        <section class="menucat" data-cat="noncoffee" aria-labelledby="menucat-noncoffee">
+          <header class="menucat__head">
+            <h3 class="display display--s" id="menucat-noncoffee">Non-Coffee</h3>
+            <p class="caption">Creamy, fruity and caffeine-light picks.</p>
+            <span class="menucat__count caption">4 items</span>
+          </header>
+          <ul class="menu">
+          <li class="item" data-cat="noncoffee" data-name="Matcha Cream" data-tags="Iced Oat milk option +1 stamp" data-soldout="">
+            <figure class="ph" data-slot="matcha" data-src="/images/cafe/matcha.webp" data-alt="Matcha Cream drink" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">matcha.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            
+            <div class="item__body"><h3>Matcha Cream</h3><p>Earthy matcha lifted by a creamy finish.</p>
+              <ul class="item__tags" aria-label="Details"><li>Iced</li><li>Oat milk option</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="3.75">$3.75</span><span class="khr caption" data-usd="3.75"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/matcha-cream" data-route="Matcha Cream" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="noncoffee" data-name="Iced Chocolate" data-tags="Iced Kids&#x27; favourite +1 stamp" data-new="" data-soldout="">
+            <figure class="ph" data-slot="iced-chocolate" data-src="/images/cafe/iced-chocolate.webp" data-alt="Iced Chocolate drink" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">iced-chocolate.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            <span class="badges" aria-label="New"><span class="badge badge--new">New</span></span>
+            <div class="item__body"><h3>Iced Chocolate</h3><p>Rich cocoa, cold milk and a whipped top.</p>
+              <ul class="item__tags" aria-label="Details"><li>Iced</li><li>Kids&#x27; favourite</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="3.50">$3.50</span><span class="khr caption" data-usd="3.50"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/iced-chocolate" data-route="Iced Chocolate" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="noncoffee" data-name="Strawberry Milk" data-tags="Iced Caffeine-free +1 stamp" data-new="" data-soldout="">
+            <figure class="ph" data-slot="strawberry-milk" data-src="/images/cafe/strawberry-milk.webp" data-alt="Strawberry Milk drink" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">strawberry-milk.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            <span class="badges" aria-label="New"><span class="badge badge--new">New</span></span>
+            <div class="item__body"><h3>Strawberry Milk</h3><p>Fresh strawberry purée swirled into cold milk.</p>
+              <ul class="item__tags" aria-label="Details"><li>Iced</li><li>Caffeine-free</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="3.40">$3.40</span><span class="khr caption" data-usd="3.40"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/strawberry-milk" data-route="Strawberry Milk" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="noncoffee" data-name="Mango Smoothie" data-tags="Blended Real fruit +1 stamp" data-new="" data-soldout="">
+            <figure class="ph" data-slot="mango-smoothie" data-src="/images/cafe/mango-smoothie.webp" data-alt="Mango Smoothie drink" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">mango-smoothie.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            <span class="badges" aria-label="New"><span class="badge badge--new">New</span></span>
+            <div class="item__body"><h3>Mango Smoothie</h3><p>Ripe mango blended with yogurt and ice.</p>
+              <ul class="item__tags" aria-label="Details"><li>Blended</li><li>Real fruit</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="3.95">$3.95</span><span class="khr caption" data-usd="3.95"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/mango-smoothie" data-route="Mango Smoothie" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          </ul>
+        </section>
+        <section class="menucat" data-cat="tea" aria-labelledby="menucat-tea">
+          <header class="menucat__head">
+            <h3 class="display display--s" id="menucat-tea">Tea</h3>
+            <p class="caption">Fragrant leaves and herbs, hot or over ice.</p>
+            <span class="menucat__count caption">3 items</span>
+          </header>
+          <ul class="menu">
+          <li class="item" data-cat="tea" data-name="Lemongrass Tea" data-tags="Hot or iced Caffeine-free +1 stamp" data-soldout="">
+            <figure class="ph" data-slot="lemongrass-tea" data-src="/images/cafe/lemongrass-tea.webp" data-alt="Lemongrass Tea" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">lemongrass-tea.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            
+            <div class="item__body"><h3>Lemongrass Tea</h3><p>Fragrant, soothing and gently citrusy.</p>
+              <ul class="item__tags" aria-label="Details"><li>Hot or iced</li><li>Caffeine-free</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="2.60">$2.60</span><span class="khr caption" data-usd="2.60"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/lemongrass-tea" data-route="Lemongrass Tea" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="tea" data-name="Jasmine Green Tea" data-tags="Hot or iced Light caffeine +1 stamp" data-new="" data-soldout="">
+            <figure class="ph" data-slot="jasmine-green-tea" data-src="/images/cafe/jasmine-green-tea.webp" data-alt="Jasmine Green Tea" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">jasmine-green-tea.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            <span class="badges" aria-label="New"><span class="badge badge--new">New</span></span>
+            <div class="item__body"><h3>Jasmine Green Tea</h3><p>Fragrant jasmine green tea, hot or over ice.</p>
+              <ul class="item__tags" aria-label="Details"><li>Hot or iced</li><li>Light caffeine</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="2.50">$2.50</span><span class="khr caption" data-usd="2.50"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/jasmine-green-tea" data-route="Jasmine Green Tea" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="tea" data-name="Passion Fruit Iced Tea" data-tags="Iced Real fruit +1 stamp" data-new="" data-soldout="">
+            <figure class="ph" data-slot="passion-fruit-tea" data-src="/images/cafe/passion-fruit-tea.webp" data-alt="Passion Fruit Iced Tea" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">passion-fruit-tea.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            <span class="badges" aria-label="New"><span class="badge badge--new">New</span></span>
+            <div class="item__body"><h3>Passion Fruit Iced Tea</h3><p>Black tea with tangy passion fruit, lime and mint.</p>
+              <ul class="item__tags" aria-label="Details"><li>Iced</li><li>Real fruit</li><li>+1 stamp</li></ul>
+              <div class="item__row"><span class="price" data-usd="3.20">$3.20</span><span class="khr caption" data-usd="3.20"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/passion-fruit-iced-tea" data-route="Passion Fruit Iced Tea" data-route-note="Customize size, sweetness, ice, milk and extras, then add to a demo order.">Customize</a></div>
+          </li>
+          </ul>
+        </section>
+        <section class="menucat" data-cat="bakery" aria-labelledby="menucat-bakery">
+          <header class="menucat__head">
+            <h3 class="display display--s" id="menucat-bakery">Bakery</h3>
+            <p class="caption">Baked in small batches each demo morning.</p>
+            <span class="menucat__count caption">5 items</span>
+          </header>
+          <ul class="menu">
+          <li class="item" data-cat="bakery" data-name="Butter Croissant" data-tags="Baked daily Vegetarian" data-soldout="">
+            <figure class="ph" data-slot="croissant" data-src="/images/cafe/croissant.webp" data-alt="Butter Croissant pastry" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">croissant.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            
+            <div class="item__body"><h3>Butter Croissant</h3><p>Golden layers, buttery at the center.</p>
+              <ul class="item__tags" aria-label="Details"><li>Baked daily</li><li>Vegetarian</li></ul>
+              <div class="item__row"><span class="price" data-usd="2.40">$2.40</span><span class="khr caption" data-usd="2.40"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/butter-croissant" data-route="Butter Croissant" data-route-note="Add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="bakery" data-name="Banana Bread" data-tags="Baked daily Contains nuts" data-soldout="">
+            <figure class="ph" data-slot="banana-bread" data-src="/images/cafe/banana-bread.webp" data-alt="Banana Bread pastry" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">banana-bread.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            
+            <div class="item__body"><h3>Banana Bread</h3><p>Soft, cozy and lightly spiced.</p>
+              <ul class="item__tags" aria-label="Details"><li>Baked daily</li><li>Contains nuts</li></ul>
+              <div class="item__row"><span class="price" data-usd="2.50">$2.50</span><span class="khr caption" data-usd="2.50"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/banana-bread" data-route="Banana Bread" data-route-note="Add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="bakery" data-name="Cinnamon Roll" data-tags="Served warm Vegetarian" data-new="" data-soldout="">
+            <figure class="ph" data-slot="cinnamon-roll" data-src="/images/cafe/cinnamon-roll.webp" data-alt="Cinnamon Roll pastry" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">cinnamon-roll.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            <span class="badges" aria-label="New"><span class="badge badge--new">New</span></span>
+            <div class="item__body"><h3>Cinnamon Roll</h3><p>Soft, swirled and glazed while warm.</p>
+              <ul class="item__tags" aria-label="Details"><li>Served warm</li><li>Vegetarian</li></ul>
+              <div class="item__row"><span class="price" data-usd="2.90">$2.90</span><span class="khr caption" data-usd="2.90"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/cinnamon-roll" data-route="Cinnamon Roll" data-route-note="Add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="bakery" data-name="Chocolate Chip Cookie" data-tags="Baked daily Vegetarian" data-new="" data-soldout="">
+            <figure class="ph" data-slot="choc-chip-cookie" data-src="/images/cafe/choc-chip-cookie.webp" data-alt="Chocolate Chip Cookie" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">choc-chip-cookie.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            <span class="badges" aria-label="New"><span class="badge badge--new">New</span></span>
+            <div class="item__body"><h3>Chocolate Chip Cookie</h3><p>Chewy centre, crisp edges, melty chocolate chips.</p>
+              <ul class="item__tags" aria-label="Details"><li>Baked daily</li><li>Vegetarian</li></ul>
+              <div class="item__row"><span class="price" data-usd="1.80">$1.80</span><span class="khr caption" data-usd="1.80"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/chocolate-chip-cookie" data-route="Chocolate Chip Cookie" data-route-note="Add to a demo order.">Customize</a></div>
+          </li>
+          <li class="item" data-cat="bakery" data-name="Pandan Coconut Cake" data-tags="Local flavour Vegetarian" data-new="" data-soldout="TK">
+            <figure class="ph" data-slot="pandan-cake" data-src="/images/cafe/pandan-cake.webp" data-alt="Pandan Coconut Cake slice" style="--ratio: 1 / 1"><figcaption class="ph__label"><span class="ph__slot">pandan-cake.webp</span><span class="ph__meta">1:1</span></figcaption></figure>
+            <span class="badges" aria-label="New"><span class="badge badge--new">New</span></span>
+            <div class="item__body"><h3>Pandan Coconut Cake</h3><p>Fluffy green pandan sponge with toasted coconut.</p>
+              <ul class="item__tags" aria-label="Details"><li>Local flavour</li><li>Vegetarian</li></ul>
+              <div class="item__row"><span class="price" data-usd="2.70">$2.70</span><span class="khr caption" data-usd="2.70"></span><span class="avail">Available here</span></div>
+              <a class="btn btn--ghost btn--sm" href="/menu/pandan-coconut-cake" data-route="Pandan Coconut Cake" data-route-note="Add to a demo order.">Customize</a></div>
+          </li>
+          </ul>
+        </section>
+        </div>
+        <p class="menu__empty" id="menu-empty" hidden>No matches yet. Try another drink or category.</p>
+        <p class="caption menu__note">KHR shown with a configurable <strong>demo conversion rate</strong>, not a real exchange rate. Ingredients and allergen information are illustrative. Ask staff in a real café. Drinks marked <strong>+1 stamp</strong> count toward the nine-stamp reward.</p>
+      </div>
+    </section>
+
+    <!-- ============================ HOW TABLE ORDERING WORKS ============================ -->
+    <section class="order section" id="order" data-theme="cream">
+      <div class="container order__grid">
+        <div class="order__copy">
+          <p class="eyebrow" data-reveal>How table ordering works</p>
+          <h2 class="display display--l" data-reveal data-split>Less waiting. More sipping.</h2>
+          <p class="lead" data-reveal>At a demo table, simply scan, customize and send your order.</p>
+          <ol class="steps">
+            <li data-reveal><span class="steps__n">1</span><div><h3>Scan the table QR</h3><p>No download or account needed.</p></div></li>
+            <li data-reveal><span class="steps__n">2</span><div><h3>Make it yours</h3><p>Choose size, sweetness, ice and extras.</p></div></li>
+            <li data-reveal><span class="steps__n">3</span><div><h3>Follow your order</h3><p>Watch it move from received to ready.</p></div></li>
+          </ol>
+          <div class="actions actions--stack" data-reveal>
+            <a class="btn btn--solid" href="/order/demo-table-01" data-route="Demo table ordering" data-route-note="Seeded table demo-table-01: browse the branch menu, customise drinks, pay with a mock KHQR flow and track the order live. Demo flow · no real order placed.">Try demo table ordering</a>
+            <span class="caption">Demo flow · no real order placed</span>
+          </div>
+        </div>
+
+        <div class="order__visual">
+          <figure class="ph ph--card order__photo" data-depth="0.3" data-slot="qr-order-demo" data-src="/images/cafe/qr-order-demo.webp" data-alt="Customer scanning a demo table ordering QR code" style="--ratio: 4 / 3">
+            <figcaption class="ph__label"><span class="ph__slot">qr-order-demo.webp</span><span class="ph__meta">4:3</span></figcaption>
+          </figure>
+          <!-- CSS phone mock-up. The tracker advances with scroll (src/ui/tracker.js). -->
+          <div class="phone" data-depth="-0.12" role="img" aria-label="Phone showing a demo order moving from received to ready">
+            <div class="phone__screen">
+              <div class="phone__top"><span>Kafé Tonlé Riverside</span><span>Table 04</span></div>
+              <p class="phone__order">Order <strong>KT-1042</strong> received!</p>
+              <ol class="tracker" id="tracker">
+                <li class="is-done">Received</li>
+                <li>Preparing</li>
+                <li>Ready</li>
+                <li>Collected</li>
+              </ol>
+              <p class="phone__status" id="tracker-status">We'll update the status as your drink is prepared.</p>
+              <div class="phone__pay">
+                <div class="fakeqr" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <p class="phone__note">Mock KHQR · <strong>Demo payment — no money will be charged.</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ LIFESTYLE / STORY (teal block, zoom-on-scroll image) ============================ -->
+    <section class="story section" id="our-story" data-theme="teal">
+      <div class="container story__grid">
+        <figure class="ph story__photo" data-zoom data-slot="interior-story" data-src="/images/cafe/interior-story.webp" data-alt="Welcoming café interior with daylight and comfortable seats" style="--ratio: 3 / 2">
+          <figcaption class="ph__label"><span class="ph__slot">interior-story.webp</span><span class="ph__meta">3:2</span></figcaption>
+        </figure>
+        <div class="story__copy">
+          <p class="eyebrow" data-reveal>Our story</p>
+          <h2 class="display display--l" data-reveal data-split>A little room to slow down.</h2>
+          <p class="lead" data-reveal>Some days call for a quiet corner; others for a table full of friends. We dreamed up Kafé Tonlé as an easygoing place for both.</p>
+          <a class="btn btn--light" href="#story-more" data-reveal>Read our story</a>
+        </div>
+      </div>
+
+      <div class="container story__more" id="story-more">
+        <div class="story__more-head">
+          <h3 class="display display--m" data-reveal data-split>Coffee is better when it brings us together.</h3>
+          <p class="lead" data-reveal>Kafé Tonlé is a fictional café concept built around simple ideas: thoughtful ingredients, friendly spaces and a cup made exactly how you like it.</p>
+        </div>
+        <div class="story__cols">
+          <div class="story__col" data-reveal><h4 class="display display--s">Inspired by the river</h4><p>We imagine each branch as a place where the pace softens and conversations have time to grow.</p></div>
+          <div class="story__col" data-reveal><h4 class="display display--s">Made for your taste</h4><p>Less sugar? More ice? Extra espresso? Small choices make the drink feel like yours.</p></div>
+          <div class="story__col" data-reveal><h4 class="display display--s">Designed for everyday convenience</h4><p>Our QR ordering concept keeps the experience personal, while cutting down the wait between ordering and enjoying.</p></div>
+          <figure class="ph ph--card story__craft" data-depth="0.2" data-slot="story-craft" data-src="/images/cafe/story-craft.webp" data-alt="Barista carefully preparing a coffee" style="--ratio: 3 / 2">
+            <figcaption class="ph__label"><span class="ph__slot">story-craft.webp</span><span class="ph__meta">3:2</span></figcaption>
+          </figure>
+        </div>
+        <a class="btn btn--light" href="#menu" data-reveal>Find your next cup</a>
+      </div>
+    </section>
+
+    <!-- ============================ LOYALTY (coffee block, stamp card fills on scroll) ============================ -->
+    <section class="rewards section" id="rewards" data-theme="coffee">
+      <div class="container rewards__grid">
+        <div class="rewards__copy">
+          <p class="eyebrow" data-reveal>Rewards</p>
+          <h2 class="display display--l" data-reveal data-split>Your 10th drink is on us.</h2>
+          <p class="lead" data-reveal>Collect one stamp for each eligible paid drink. After nine stamps, redeem a free eligible drink on your tenth. Your reward stays in your account until used.</p>
+          <div class="actions" data-reveal>
+            <button type="button" class="btn btn--gold" id="rewards-toggle" aria-expanded="false" aria-controls="rewards-rules">How rewards work</button>
+            <a class="btn btn--ghost btn--light" href="/rewards" data-route="Rewards account" data-route-note="Sign in with a demo phone identity or an approved test Telegram account to keep your stamps in one place. Guest state: Save your progress for next time.">Create demo rewards account</a>
+          </div>
+          <div class="rewards__rules" id="rewards-rules" hidden>
+            <ol>
+              <li>Order and pay for an eligible drink.</li>
+              <li>Earn one stamp after the order is paid.</li>
+              <li>Collect nine stamps.</li>
+              <li>Claim your free eligible tenth drink.</li>
+            </ol>
+            <p class="caption">One stamp per paid eligible drink. Free drinks do not earn new stamps. Refunds reverse corresponding stamps. Rewards are account-bound and cannot be exchanged for cash. Demo only.</p>
+          </div>
+        </div>
+
+        <div class="rewards__visual">
+          <div class="stampcard" id="stampcard" data-depth="0.18" data-stamps="6">
+            <header class="stampcard__head"><span>KAFÉ TONLÉ · REWARDS</span><span>Demo account</span></header>
+            <ul class="stampcard__grid" aria-hidden="true">
+              <li class="stamp"></li><li class="stamp"></li><li class="stamp"></li><li class="stamp"></li><li class="stamp"></li>
+              <li class="stamp"></li><li class="stamp"></li><li class="stamp"></li><li class="stamp"></li><li class="stamp stamp--free">FREE</li>
+            </ul>
+            <p class="stampcard__status" id="stamp-status">You have 0 of 9 stamps toward your next free drink.</p>
+            <a class="stampcard__link" href="/rewards/history" data-route="Reward history" data-route-note="Ledger of stamps earned, reversed on refund and redeemed, per paid order item.">View reward history →</a>
+          </div>
+          <figure class="ph ph--card rewards__photo" data-depth="-0.2" data-slot="reward-card" data-src="/images/cafe/reward-card.webp" data-alt="Illustrated progress toward a free tenth drink" style="--ratio: 3 / 2">
+            <figcaption class="ph__label"><span class="ph__slot">reward-card.webp</span><span class="ph__meta">3:2</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ FINAL CTA (gold block) ============================ -->
+    <section class="cta section" data-theme="gold">
+      <div class="container cta__inner">
+        <h2 class="display display--l" data-reveal data-split>Three neighborhoods. One great coffee break.</h2>
+        <p class="lead" data-reveal>Explore sample branches and choose your favorite atmosphere.</p>
+        <a class="btn btn--solid" href="#locations" data-reveal>See locations</a>
+      </div>
+    </section>
+
+    <!-- ============================ LOCATIONS ============================ -->
+    <section class="locations section" id="locations" data-theme="cream">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow" data-reveal>Locations</p>
+          <h2 class="display display--l" data-reveal data-split>Your corner of the city.</h2>
+          <p class="lead" data-reveal>Three imagined café spaces, each with its own rhythm. Locations and hours are examples for this portfolio.</p>
+        </header>
+        <ul class="branches">
+          <li class="branch tilt" data-reveal>
+            <figure class="ph" data-slot="branch-riverside" data-src="/images/cafe/branch-riverside.webp" data-alt="Kafé Tonlé Riverside interior" style="--ratio: 3 / 2"><figcaption class="ph__label"><span class="ph__slot">branch-riverside.webp</span><span class="ph__meta">3:2</span></figcaption></figure>
+            <div class="branch__body">
+              <h3 class="display display--s">Kafé Tonlé Riverside</h3>
+              <p>For unhurried mornings and long conversations.</p>
+              <dl class="branch__meta"><dt>Illustrative hours</dt><dd>7:00 AM–9:00 PM</dd><dt>Sample amenities</dt><dd>Wi-Fi · Indoor seats · Takeaway</dd></dl>
+              <a class="btn btn--ghost btn--sm" href="/locations/riverside" data-route="Kafé Tonlé Riverside" data-route-note="Branch page: full-width photo, about this space, amenities, illustrative hours, branch menu availability and a labelled demo map area.">Preview branch menu</a>
+            </div>
+          </li>
+          <li class="branch tilt" data-reveal>
+            <figure class="ph" data-slot="branch-toulkork" data-src="/images/cafe/branch-toulkork.webp" data-alt="Kafé Tonlé Toul Kork interior" style="--ratio: 3 / 2"><figcaption class="ph__label"><span class="ph__slot">branch-toulkork.webp</span><span class="ph__meta">3:2</span></figcaption></figure>
+            <div class="branch__body">
+              <h3 class="display display--s">Kafé Tonlé Toul Kork</h3>
+              <p>A neighborhood pause between busy moments.</p>
+              <dl class="branch__meta"><dt>Illustrative hours</dt><dd>7:30 AM–9:30 PM</dd><dt>Sample amenities</dt><dd>Wi-Fi · Indoor seats · Takeaway</dd></dl>
+              <a class="btn btn--ghost btn--sm" href="/locations/toul-kork" data-route="Kafé Tonlé Toul Kork" data-route-note="Branch page: full-width photo, about this space, amenities, illustrative hours, branch menu availability and a labelled demo map area.">Preview branch menu</a>
+            </div>
+          </li>
+          <li class="branch tilt" data-reveal>
+            <figure class="ph" data-slot="branch-bkk1" data-src="/images/cafe/branch-bkk1.webp" data-alt="Kafé Tonlé BKK1 interior" style="--ratio: 3 / 2"><figcaption class="ph__label"><span class="ph__slot">branch-bkk1.webp</span><span class="ph__meta">3:2</span></figcaption></figure>
+            <div class="branch__body">
+              <h3 class="display display--s">Kafé Tonlé BKK1</h3>
+              <p>Espresso breaks in the heart of the city.</p>
+              <dl class="branch__meta"><dt>Illustrative hours</dt><dd>7:00 AM–10:00 PM</dd><dt>Sample amenities</dt><dd>Wi-Fi · Indoor seats · Takeaway</dd></dl>
+              <a class="btn btn--ghost btn--sm" href="/locations/bkk1" data-route="Kafé Tonlé BKK1" data-route-note="Branch page: full-width photo, about this space, amenities, illustrative hours, branch menu availability and a labelled demo map area.">Preview branch menu</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================ FAQ + CONTACT ============================ -->
+    <section class="faq section" id="faq" data-theme="cream">
+      <div class="container faq__grid">
+        <div class="faq__head">
+          <p class="eyebrow" data-reveal>FAQs</p>
+          <h2 class="display display--m" data-reveal data-split>Good questions.</h2>
+        </div>
+        <div class="accordion" data-reveal>
+          <details><summary>Do I need an app to order?</summary><p>No. Open the table QR link in your browser and you can order as a guest.</p></details>
+          <details><summary>Can I change sugar and ice?</summary><p>Yes. Choose your preference on eligible drinks before adding them to your cart.</p></details>
+          <details><summary>Can I pay with KHQR?</summary><p>This concept shows a simulated KHQR flow; it does not accept real payments.</p></details>
+          <details><summary>Can I collect stamps without an account?</summary><p>You can order as a guest, but a linked demo rewards account is required to retain stamps.</p></details>
+          <details><summary>What happens if a drink is sold out?</summary><p>The menu reflects availability at your selected demo branch.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact section" id="contact" data-theme="cream">
+      <div class="container contact__grid">
+        <div class="contact__copy">
+          <p class="eyebrow" data-reveal>Contact</p>
+          <h2 class="display display--l" data-reveal data-split>Say hello.</h2>
+          <p class="lead" data-reveal>Questions about this concept? Send a demo message below.</p>
+          <p class="caption" data-reveal>hello@kafetonle.example · illustrative address, no real mailbox</p>
+        </div>
+        <form class="form" id="contact-form" novalidate data-reveal>
+          <label class="field"><span class="field__label">Name</span><input name="name" required autocomplete="name" /></label>
+          <label class="field"><span class="field__label">Email</span><input type="email" name="email" required autocomplete="email" /></label>
+          <label class="field"><span class="field__label">Topic</span>
+            <select name="topic"><option>General</option><option>Menu</option><option>Rewards</option><option>Locations</option><option>Something else</option></select>
+          </label>
+          <label class="field"><span class="field__label">Message</span><textarea name="message" rows="4" required maxlength="600"></textarea></label>
+          <button class="btn btn--solid" type="submit">Send demo message</button>
+          <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" data-theme="night">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a class="wordmark" href="#home">KAFÉ <em>TONLÉ</em></a>
+        <p>A little pause in your day, poured with care.</p>
+      </div>
+      <div><h4>Discover</h4><ul><li><a href="#menu">Menu</a></li><li><a href="#our-story">Our Story</a></li><li><a href="#rewards">Rewards</a></li><li><a href="#faq">FAQs</a></li></ul></div>
+      <div><h4>Visit</h4><ul><li>Riverside</li><li>Toul Kork</li><li>BKK1</li></ul><p class="caption">Illustrative areas, not addresses.</p></div>
+      <div><h4>Say hello</h4><p>hello@kafetonle.example</p><p class="caption">Demo-only; no real mailbox.</p></div>
+    </div>
+    <div class="container footer__legal">
+      <p>Opening hours shown here are illustrative. Orders and payments are simulations.</p>
+      <p class="footer__disclaimer">Concept project by Thareah — fictional brand, not affiliated with any business.</p>
+    </div>
+  </footer>
+
+  <!-- Route stub: intercepts links to pages that belong to the full Next.js build. -->
+  <div class="modal" id="route-modal" role="dialog" aria-modal="true" aria-labelledby="route-title" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__card">
+      <p class="eyebrow">Full-build route</p>
+      <h3 class="display display--s" id="route-title">Page</h3>
+      <code class="modal__path" id="route-path">/</code>
+      <p id="route-note"></p>
+      <p class="caption">This single-page preview is the design and motion layer. The route above is implemented by the Next.js app in the full project build (see SYSTEM.md).</p>
+      <button type="button" class="btn btn--solid btn--sm" data-close>Got it</button>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
